@@ -1,0 +1,1 @@
+Use esta pasta para componentes da interface gráfica, como HUD, menus, etc.
