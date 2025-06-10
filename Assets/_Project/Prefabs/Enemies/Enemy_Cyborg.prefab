@@ -1,0 +1,5 @@
+// Prefab: Enemy_Cyborg
+// Componente: SpriteRenderer usando Enemy_Cyborg.png
+// Rigidbody2D+BoxCollider2D
+// Scripts: EnemyPatrol.cs, EnemyAttack.cs
+// Ponto de disparo como child

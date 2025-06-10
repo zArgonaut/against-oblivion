@@ -1,0 +1,4 @@
+// Prefab: Enemy_Drone
+// Componente: SpriteRenderer usando Enemy_Drone.png
+// Rigidbody2D (gravity scale 0)+CircleCollider2D
+// Scripts: EnemyAdvancedAI.cs, EnemyHealth.cs, EnemyAttack.cs

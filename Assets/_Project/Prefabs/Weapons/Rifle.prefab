@@ -1,0 +1,3 @@
+// Prefab: Rifle
+// SpriteRenderer uses 'Rifle.png'
+// Components: SpriteRenderer, BoxCollider2D, WeaponController.cs
