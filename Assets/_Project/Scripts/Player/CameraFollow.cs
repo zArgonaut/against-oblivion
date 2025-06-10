@@ -9,7 +9,7 @@ public class CameraFollow : MonoBehaviour {
     void LateUpdate() {
         if (alvo == null) return;
         Vector3 posDesejada = alvo.position + offset;
-        Vector3 posSuavizada = Vector3.Lerp(transform.position, posDesejada, suavidade);
+        Vector3 posSuavizada = Vector3.Lerp(transform.position, posDesejada, suavidade * Time.deltaTime);
         transform.position = posSuavizada;
     }
 }
