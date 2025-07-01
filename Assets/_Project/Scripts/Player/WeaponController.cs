@@ -32,9 +32,11 @@ public class WeaponController : MonoBehaviour
 
     void Shoot()
     {
-        if (projectilePrefab != null && firePoint != null)
+        if (ProjectilePool.instance != null && firePoint != null)
         {
-            ProjectileController proj = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+            ProjectileController proj = ProjectilePool.instance.Get();
+            proj.transform.position = firePoint.position;
+            proj.transform.rotation = firePoint.rotation;
             proj.dano = damage;
         }
     }

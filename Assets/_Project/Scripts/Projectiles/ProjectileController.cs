@@ -7,9 +7,17 @@ public class ProjectileController : MonoBehaviour
     public float lifeTime = 3f;
     public LayerMask hitMask;
 
-    void Start()
+    [HideInInspector]
+    public ProjectilePool pool;
+
+    void OnEnable()
     {
-        Destroy(gameObject, lifeTime);
+        Invoke(nameof(ReturnToPool), lifeTime);
+    }
+
+    void OnDisable()
+    {
+        CancelInvoke();
     }
 
     void Update()
@@ -26,7 +34,15 @@ public class ProjectileController : MonoBehaviour
             {
                 enemy.LevarDano(dano);
             }
-            Destroy(gameObject);
+            ReturnToPool();
         }
+    }
+
+    void ReturnToPool()
+    {
+        if (pool != null)
+            pool.ReturnProjectile(this);
+        else
+            Destroy(gameObject);
     }
 }
