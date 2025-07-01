@@ -3,7 +3,6 @@ using UnityEngine;
 public class WeaponController : MonoBehaviour
 {
     [Header("Weapon Settings")]
-    public ProjectileController projectilePrefab;
     public ProjectilePool pool;
     public Transform firePoint;
     public float fireRate = 0.5f;
