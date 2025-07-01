@@ -18,3 +18,7 @@ UserSettings/
 *.mdb
 *.opendb
 *.VC.db
+
+# Ignore logs and PlasticSCM metadata
+Logs/
+.plastic/
