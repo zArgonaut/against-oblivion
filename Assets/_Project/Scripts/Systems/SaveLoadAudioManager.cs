@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class SaveLoadAudioManager : MonoBehaviour
 {
+    [Range(0f, 1f)]
     public float volume = 1f;
 
     const string VolumeKey = "MasterVolume";
@@ -12,6 +13,14 @@ public class SaveLoadAudioManager : MonoBehaviour
     void Awake()
     {
         Load();
+    }
+
+    // Permite ajustar o volume em tempo real e salvar a preferência.
+    public void SetVolume(float value)
+    {
+        volume = Mathf.Clamp01(value);
+        AudioListener.volume = volume;
+        Save();
     }
 
     public void Save()

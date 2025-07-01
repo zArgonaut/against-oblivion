@@ -1,5 +1,5 @@
 // Sistema responsável por gerenciar upgrades comprados pelo jogador.
-// TODO: integrar com inventário e salvar progresso entre sessões.
+// TODO: integrar com inventário de itens e armazenar progresso em arquivo.
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -40,6 +40,7 @@ public class UpgradeSystem : MonoBehaviour
         return true;
     }
 
+    // Aqui cada upgrade deve modificar estatísticas ou liberar habilidades.
     void ApplyUpgrade(Upgrade upg)
     {
         // TODO: aplicar os efeitos reais de cada upgrade

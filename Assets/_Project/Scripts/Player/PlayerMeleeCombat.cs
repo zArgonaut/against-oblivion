@@ -1,5 +1,5 @@
 // Controle básico de combate corpo a corpo do jogador.
-// TODO: expandir com combos e diferentes tipos de ataque.
+// TODO: expandir com combos, dano escalonável e interação com armas futuramente.
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
@@ -24,6 +24,7 @@ public class PlayerMeleeCombat : MonoBehaviour
             Attack();
     }
 
+    // Ativa animação e verifica alvos atingidos.
     void Attack()
     {
         anim.SetTrigger("Attack");
