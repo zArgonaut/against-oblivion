@@ -63,9 +63,9 @@ Assets/
    git clone https://github.com/zArgonaut/against-oblivion.git
    ```
 2. Abra com o Unity.
+   - Requer Unity na versão 6000.1.5f1 (verifique em `ProjectSettings/ProjectVersion.txt`).
 3. Navegue até `Assets/_Project/Scenes/` e crie a cena inicial `MainMenu.unity` (ou execute-a se já existir).
 
-## 🔄 Git Ignore
 
 Este projeto já vem com um `.gitignore` configurado para projetos Unity, evitando que arquivos desnecessários sejam versionados (como `Library/`, `Temp/`, `Build/`, entre outros).
 
@@ -121,6 +121,11 @@ git merge main
 - Evite mexer diretamente em arquivos `.meta`  
 
 ---
+## 🆕 Atualizações
+
+- Corrigido o suavização da câmera multiplicando a suavidade por `Time.deltaTime`.
+- Arquivo `ignore.conf` removido e todas as regras migradas para `.gitignore`.
+
 
 ## 📄 Licença
 
