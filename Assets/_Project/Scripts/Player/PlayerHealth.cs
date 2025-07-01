@@ -16,11 +16,11 @@ public class PlayerHealth : MonoBehaviour
     }
 
     // Formerly TakeDamage
-    public void LevarDano(int dano)
+    public void LevarDano(int quantidade)
     {
-        if (dano <= 0) return;
+        if (quantidade <= 0) return;
 
-        currentHealth -= dano;
+        currentHealth -= quantidade;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
         if (currentHealth <= 0)
