@@ -5,10 +5,7 @@ public class MenuManager : MonoBehaviour
 {
     public void Jogar()
     {
-        if (GameFlowManager.Instance != null)
-            GameFlowManager.Instance.StartGame();
-        else
-            SceneManager.LoadScene("FaseDeserto");
+        GameFlowManager.Instance?.StartGame();
     }
 
     public void MostrarLoja()

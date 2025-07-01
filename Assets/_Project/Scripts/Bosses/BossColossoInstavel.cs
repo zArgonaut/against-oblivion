@@ -47,7 +47,6 @@ public class BossColossoInstavel : MonoBehaviour
     void Morrer()
     {
         Destroy(gameObject);
-        if (GameFlowManager.Instance != null)
-            GameFlowManager.Instance.AdvanceLevel();
+        GameFlowManager.Instance?.AdvanceLevel();
     }
 }
