@@ -8,7 +8,7 @@ public class PlayerMeleeCombat : MonoBehaviour
     [Header("Configurações de Ataque")]
     public Transform attackPoint; // Origem do ataque
     public float attackRange = 1f;
-    public int damage = 1;
+    public int damage = 20;
     public LayerMask enemyLayers;
 
     Animator anim;
