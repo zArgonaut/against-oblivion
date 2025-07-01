@@ -4,6 +4,7 @@ public class WeaponController : MonoBehaviour
 {
     [Header("Weapon Settings")]
     public ProjectileController projectilePrefab;
+    public ProjectilePool pool;
     public Transform firePoint;
     public float fireRate = 0.5f;
     public int damage = 25;
@@ -32,9 +33,9 @@ public class WeaponController : MonoBehaviour
 
     void Shoot()
     {
-        if (ProjectilePool.instance != null && firePoint != null)
+        if (pool != null && firePoint != null)
         {
-            ProjectileController proj = ProjectilePool.instance.Get();
+            ProjectileController proj = pool.Pegar();
             proj.transform.position = firePoint.position;
             proj.transform.rotation = firePoint.rotation;
             proj.dano = damage;

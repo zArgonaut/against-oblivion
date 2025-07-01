@@ -1,48 +1,37 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class ProjectilePool : MonoBehaviour
 {
-    public static ProjectilePool instance;
-
-    public ProjectileController projectilePrefab;
-    public int initialSize = 10;
-
-    private Queue<ProjectileController> pool = new Queue<ProjectileController>();
+    public ProjectileController prefab;
+    public int tamanhoInicial = 10;
+    Queue<ProjectileController> pool = new Queue<ProjectileController>();
 
     void Awake()
     {
-        if (instance == null) instance = this;
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        for (int i = 0; i < initialSize; i++)
-            AddProjectile();
+        for (int i = 0; i < tamanhoInicial; i++)
+            CriarNovo();
     }
 
-    ProjectileController AddProjectile()
+    ProjectileController CriarNovo()
     {
-        ProjectileController proj = Instantiate(projectilePrefab);
-        proj.pool = this;
+        var proj = Instantiate(prefab, transform);
         proj.gameObject.SetActive(false);
+        proj.pool = this;
         pool.Enqueue(proj);
         return proj;
     }
 
-    public ProjectileController Get()
+    public ProjectileController Pegar()
     {
         if (pool.Count == 0)
-            AddProjectile();
-
-        ProjectileController proj = pool.Dequeue();
+            CriarNovo();
+        var proj = pool.Dequeue();
         proj.gameObject.SetActive(true);
         return proj;
     }
 
-    public void ReturnProjectile(ProjectileController proj)
+    public void Devolver(ProjectileController proj)
     {
         proj.gameObject.SetActive(false);
         pool.Enqueue(proj);
