@@ -15,11 +15,11 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(int amount)
+    public void LevarDano(int dano)
     {
-        if (amount <= 0) return;
+        if (dano <= 0) return;
 
-        currentHealth -= amount;
+        currentHealth -= dano;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
         if (currentHealth <= 0)
