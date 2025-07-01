@@ -15,6 +15,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
     }
 
+    // Formerly TakeDamage
     public void LevarDano(int dano)
     {
         if (dano <= 0) return;
