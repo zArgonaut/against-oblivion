@@ -33,7 +33,7 @@ Projeto de desenvolvimento de jogo em primeira pessoa (FPS) com múltiplas fases
 
 ## 🛠️ Tecnologias Utilizadas
 
-- Unity Engine  
+- Unity Engine (versão testada: **6000.1.5f1**)
 - C# (scripts de lógica e controle)  
 - Shader Graph / Sistema de partículas  
 - Blender (modelagem 3D de personagens e ambientes)  
@@ -64,6 +64,20 @@ Assets/
    ```
 2. Abra com o Unity.
 3. Navegue até `Assets/_Project/Scenes/` e crie a cena inicial `MainMenu.unity` (ou execute-a se já existir).
+
+## ▶️ Testando no Unity
+
+1. Abra o projeto no **Unity 6000.1.5f1**.
+2. Aguarde o Package Manager instalar os pacotes descritos em `Packages/manifest.json`.
+3. Abra uma das cenas em `Assets/_Project/Scenes/` (por exemplo `MainMenu.unity` ou `TesteJogabilidade.unity`).
+4. Em **File > Build Settings...** clique em **Add Open Scenes** para garantir que a cena seja carregada na build.
+5. Pressione **Play** para iniciar o modo de jogo.
+
+### 🎯 Configurando o prefab do jogador
+
+1. Crie um objeto jogador na cena e adicione os scripts localizados em `Assets/_Project/Scripts/Player/`.
+2. Após ajustar componentes como `Rigidbody2D` e colliders, arraste o objeto para `Assets/_Project/Prefabs/Characters/` para salvar como `Player.prefab`.
+3. Coloque esse prefab nas cenas de teste para validar os controles e a lógica do jogo.
 
 ## 🔄 Git Ignore
 
