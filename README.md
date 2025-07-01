@@ -126,6 +126,52 @@ git merge main
 - Corrigido o suavização da câmera multiplicando a suavidade por `Time.deltaTime`.
 - Arquivo `ignore.conf` removido e todas as regras migradas para `.gitignore`.
 
+---
+
+## 🗺️ Guia Rápido para Desenvolvedores
+
+### Abrindo as cenas
+
+Todas as cenas ficam no diretório `Assets/_Project/Scenes/`.
+Abra cada uma delas pelo **Unity** em `File > Open Scene`:
+
+```
+Assets/_Project/Scenes/
+├── MainMenu.unity
+├── FaseDeserto.unity
+├── FaseGelo.unity
+├── FaseMontanha.unity
+├── LojaEntreFases.unity
+├── TesteJogabilidade.unity
+└── Cena_TestesAgainstOblivion.unity
+```
+
+### Onde estão os scripts
+
+Os scripts de lógica ficam em `Assets/_Project/Scripts/` organizados em subpastas
+como `Player`, `Enemies`, `Bosses`, `Items`, `UI` e `Systems`.
+Adicione novos arquivos sempre nessas pastas para manter o padrão do projeto.
+
+### Rodando a partir do `MainMenu`
+
+Para testar o jogo basta abrir a cena `MainMenu.unity` e pressionar **Play**.
+Certifique-se de que ela é a primeira cena na lista de **Build Settings**.
+
+### Criando novas fases
+
+1. Crie uma nova cena dentro de `Assets/_Project/Scenes/` (por exemplo
+   `FaseNova.unity`).
+2. Insira a nova cena em **File > Build Settings** na sequência desejada.
+3. Prefira duplicar uma fase existente para manter configurações padrão do
+   projeto.
+
+### Adicionando novos inimigos
+
+1. Crie um prefab em `Assets/_Project/Prefabs/Enemies/` contendo todos os
+   componentes necessários.
+2. Coloque os scripts de comportamento em `Assets/_Project/Scripts/Enemies`.
+3. Ao incluir o inimigo em uma fase, use o prefab para garantir consistência.
+
 
 ## 📄 Licença
 
