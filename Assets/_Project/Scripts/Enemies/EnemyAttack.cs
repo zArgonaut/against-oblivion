@@ -18,7 +18,7 @@ public class EnemyAttack : MonoBehaviour
             Collider2D hit = Physics2D.OverlapCircle(pontoAtaque.position, raio, playerLayer);
             if (hit != null)
             {
-                hit.GetComponent<PlayerHealth>()?.LevarDano(dano);
+                hit.GetComponent<PlayerHealth>()?.TakeDamage(dano);
                 timer = intervalo;
             }
         }
