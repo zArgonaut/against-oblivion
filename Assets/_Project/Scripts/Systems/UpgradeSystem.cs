@@ -15,11 +15,18 @@ public class UpgradeSystem : MonoBehaviour
     }
 
     public List<Upgrade> upgrades = new List<Upgrade>();
+    private Dictionary<string, Upgrade> lookup = new Dictionary<string, Upgrade>();
+
+    void Awake()
+    {
+        foreach (var upg in upgrades)
+            lookup[upg.id] = upg;
+        LoadProgress();
+    }
 
     public bool TryPurchase(string id)
     {
-        var upg = upgrades.Find(u => u.id == id);
-        if (upg == null || upg.level >= upg.maxLevel)
+        if (!lookup.TryGetValue(id, out var upg) || upg.level >= upg.maxLevel)
             return false;
 
         int cost = upg.baseCost * (upg.level + 1);
@@ -29,6 +36,7 @@ public class UpgradeSystem : MonoBehaviour
         ScoreManager.instance.pontos -= cost;
         upg.level++;
         ApplyUpgrade(upg);
+        SaveProgress(upg);
         return true;
     }
 
@@ -36,5 +44,19 @@ public class UpgradeSystem : MonoBehaviour
     {
         // TODO: aplicar os efeitos reais de cada upgrade
         Debug.Log($"Upgrade {upg.id} aplicado. N\u00edvel {upg.level}");
+    }
+
+    void SaveProgress(Upgrade upg)
+    {
+        PlayerPrefs.SetInt($"upgrade_{upg.id}", upg.level);
+        PlayerPrefs.Save();
+    }
+
+    void LoadProgress()
+    {
+        foreach (var upg in upgrades)
+        {
+            upg.level = PlayerPrefs.GetInt($"upgrade_{upg.id}", upg.level);
+        }
     }
 }

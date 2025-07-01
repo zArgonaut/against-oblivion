@@ -18,11 +18,13 @@ public class SaveLoadAudioManager : MonoBehaviour
     {
         PlayerPrefs.SetFloat(VolumeKey, volume);
         PlayerPrefs.Save();
+        AudioListener.volume = volume;
     }
 
     public void Load()
     {
         volume = PlayerPrefs.GetFloat(VolumeKey, 1f);
-        // TODO: aplicar volume no AudioListener ou mixer
+        AudioListener.volume = volume;
+        // TODO: substituir por controle de AudioMixer quando implementado
     }
 }
