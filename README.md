@@ -116,11 +116,19 @@ git merge main
 
 ### ⚠️ Cuidados com o Unity
 
-- Evite trabalhar simultaneamente na mesma cena `.unity`  
-- Nunca delete diretórios ou arquivos sem combinar com o time  
-- Evite mexer diretamente em arquivos `.meta`  
+- Evite trabalhar simultaneamente na mesma cena `.unity`
+- Nunca delete diretórios ou arquivos sem combinar com o time
+- Evite mexer diretamente em arquivos `.meta`
 
 ---
+## Jogando
+
+Abra `Assets/_Project/Scenes/MainMenu.unity` no Unity e pressione Play. O progresso segue pelas fases e retorna ao menu ao final.
+
+## Contribuindo
+
+Scripts ficam em `Assets/_Project/Scripts`. Para adicionar inimigos crie um prefab em `Prefabs` e registre no `HordaManager`.
+
 ## 🆕 Atualizações
 
 - Corrigido o suavização da câmera multiplicando a suavidade por `Time.deltaTime`.
@@ -129,6 +137,6 @@ git merge main
 
 ## 📄 Licença
 
-Projeto de uso acadêmico e educacional.  
+Projeto de uso acadêmico e educacional.
 Todos os direitos reservados aos autores citados neste documento.
 

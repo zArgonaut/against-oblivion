@@ -33,7 +33,7 @@ public class EnemyAdvancedAI : MonoBehaviour
             destino = jogador;
         }
         Vector2 dir = (destino.position - transform.position).normalized;
-        rb.linearVelocity = new Vector2(dir.x * velocidade, rb.linearVelocity.y);
+        rb.velocity = new Vector2(dir.x * velocidade, rb.velocity.y);
         if (animator) animator.SetFloat("Velocidade", Mathf.Abs(dir.x));
         transform.localScale = new Vector3(Mathf.Sign(dir.x), 1, 1);
     }
