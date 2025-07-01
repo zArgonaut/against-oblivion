@@ -14,6 +14,9 @@ public class SceneInitializer : MonoBehaviour
 
     void Awake()
     {
+        if (GameFlowManager.Instance == null)
+            new GameObject("GameFlowManager").AddComponent<GameFlowManager>();
+
         // Instancia o jogador
         if (playerPrefab != null && playerSpawn != null)
             Instantiate(playerPrefab, playerSpawn.position, Quaternion.identity);

@@ -33,7 +33,7 @@ public class BossSombraCongelada : MonoBehaviour
     public void LevarDano(int dano)
     {
         if (estado != Estado.Vulneravel) return;
-        // aplicar dano
+        Morrer();
     }
 
     public void SurpriseAttack()
@@ -50,5 +50,12 @@ public class BossSombraCongelada : MonoBehaviour
         // uivar e tremer
         Instantiate(fxUivo, transform.position, Quaternion.identity);
         EntrarOculto();
+    }
+
+    void Morrer()
+    {
+        Destroy(gameObject);
+        if (GameFlowManager.Instance != null)
+            GameFlowManager.Instance.AdvanceLevel();
     }
 }

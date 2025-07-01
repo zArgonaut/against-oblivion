@@ -42,5 +42,7 @@ public class BossControllerDeserto : MonoBehaviour
     {
         // efeito de morte
         Destroy(gameObject);
+        if (GameFlowManager.Instance != null)
+            GameFlowManager.Instance.AdvanceLevel();
     }
 }
