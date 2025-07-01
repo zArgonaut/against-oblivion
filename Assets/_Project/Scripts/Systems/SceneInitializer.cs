@@ -18,8 +18,9 @@ public class SceneInitializer : MonoBehaviour
         if (playerPrefab != null && playerSpawn != null)
             Instantiate(playerPrefab, playerSpawn.position, Quaternion.identity);
 
-        // Instancia o HordaManager e configura pontos de spawn
-        if (hordaManagerPrefab != null)
+        // Instancia o HordaManager e configura pontos de spawn,
+        // mas evita duplicatas caso ele já exista na cena
+        if (hordaManagerPrefab != null && FindObjectOfType<HordaManager>() == null)
         {
             var hordaGO = Instantiate(hordaManagerPrefab);
             var horda = hordaGO.GetComponent<HordaManager>();
@@ -27,8 +28,8 @@ public class SceneInitializer : MonoBehaviour
                 horda.pontosSpawn = spawnPoints;
         }
 
-        // Instancia HUD de pontuação
-        if (scoreHUDPrefab != null)
+        // Instancia HUD de pontuação apenas se ainda não existir
+        if (scoreHUDPrefab != null && FindObjectOfType<ScoreManager>() == null)
             Instantiate(scoreHUDPrefab);
 
         // Instancia painel administrativo
