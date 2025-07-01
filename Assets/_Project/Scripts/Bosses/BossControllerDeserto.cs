@@ -40,7 +40,7 @@ public class BossControllerDeserto : MonoBehaviour
 
     void Morrer()
     {
-        // efeito de morte
         Destroy(gameObject);
+        GameFlowManager.instancia?.Avancar();
     }
 }
