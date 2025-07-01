@@ -29,11 +29,13 @@ public class SceneInitializer : MonoBehaviour
         }
 
         // Instancia HUD de pontuação apenas se ainda não existir
-        if (scoreHUDPrefab != null && FindObjectOfType<ScoreManager>() == null)
+        var scoreManagerExistente = FindObjectOfType<ScoreManager>();
+        if (scoreHUDPrefab != null && scoreManagerExistente == null)
             Instantiate(scoreHUDPrefab);
 
         // Instancia painel administrativo
-        if (adminPanelPrefab != null)
+        var canvasExistente = FindObjectOfType<Canvas>();
+        if (adminPanelPrefab != null && canvasExistente == null)
             Instantiate(adminPanelPrefab);
     }
 }
