@@ -17,7 +17,7 @@ public class EnemyPatrol : MonoBehaviour
         if (pontosPatrulha.Length == 0) return;
         Transform alvo = pontosPatrulha[indice];
         Vector2 dir = (alvo.position - transform.position).normalized;
-        rb.linearVelocity = new Vector2(dir.x * velocidade, rb.linearVelocity.y);
+        rb.velocity = new Vector2(dir.x * velocidade, rb.velocity.y);
         if (Vector2.Distance(transform.position, alvo.position) < 0.2f)
             indice = (indice + 1) % pontosPatrulha.Length;
     }

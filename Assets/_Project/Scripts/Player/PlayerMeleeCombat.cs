@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class PlayerMeleeCombat : MonoBehaviour
 {
-    [Header("Configura\u00e7\u00f5es de Ataque")]
+    [Header("Configurações de Ataque")]
     public Transform attackPoint; // Origem do ataque
     public float attackRange = 1f;
     public int damage = 1;
@@ -34,7 +34,7 @@ public class PlayerMeleeCombat : MonoBehaviour
         Collider2D[] hits = Physics2D.OverlapCircleAll(origem, attackRange, enemyLayers);
         foreach (var hit in hits)
         {
-            // Envia dano caso o alvo possua um m\u00e9todo apropriado
+            // Envia dano caso o alvo possua um método apropriado
             hit.SendMessage("LevarDano", damage, SendMessageOptions.DontRequireReceiver);
         }
     }

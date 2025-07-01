@@ -15,22 +15,22 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(int amount)
+    public void LevarDano(int quantidade)
     {
-        if (amount <= 0) return;
+        if (quantidade <= 0) return;
 
-        currentHealth -= amount;
+        currentHealth -= quantidade;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
         if (currentHealth <= 0)
             Die();
     }
 
-    public void Heal(int amount)
+    public void Curar(int quantidade)
     {
-        if (amount <= 0) return;
+        if (quantidade <= 0) return;
 
-        currentHealth += amount;
+        currentHealth += quantidade;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
     }
 

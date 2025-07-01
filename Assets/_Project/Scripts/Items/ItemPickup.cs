@@ -22,7 +22,7 @@ public class ItemPickup : MonoBehaviour
         switch (tipo)
         {
             case TipoItem.Vida:
-                vida?.Heal(valor);
+                vida?.Curar(valor);
                 break;
             case TipoItem.Energia:
                 energia?.Restore(valor);

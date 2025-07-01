@@ -44,7 +44,7 @@ public class UpgradeSystem : MonoBehaviour
     void ApplyUpgrade(Upgrade upg)
     {
         // TODO: aplicar os efeitos reais de cada upgrade
-        Debug.Log($"Upgrade {upg.id} aplicado. N\u00edvel {upg.level}");
+        Debug.Log($"Upgrade {upg.id} aplicado. Nível {upg.level}");
     }
 
     void SaveProgress(Upgrade upg)
