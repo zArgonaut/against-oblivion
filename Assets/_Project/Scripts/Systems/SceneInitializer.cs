@@ -18,9 +18,9 @@ public class SceneInitializer : MonoBehaviour
         if (playerPrefab != null && playerSpawn != null)
             Instantiate(playerPrefab, playerSpawn.position, Quaternion.identity);
 
-        // Instancia o HordaManager e configura pontos de spawn,
-        // mas evita duplicatas caso ele já exista na cena
-        if (hordaManagerPrefab != null && FindObjectOfType<HordaManager>() == null)
+        // Instancia o HordaManager apenas se ainda n\u00e3o houver um ativo na cena
+        var managerExistente = FindObjectOfType<HordaManager>();
+        if (hordaManagerPrefab != null && managerExistente == null)
         {
             var hordaGO = Instantiate(hordaManagerPrefab);
             var horda = hordaGO.GetComponent<HordaManager>();
