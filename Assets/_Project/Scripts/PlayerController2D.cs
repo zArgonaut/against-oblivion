@@ -26,13 +26,13 @@ public class PlayerController2D : MonoBehaviour
     void Move()
     {
         float move = Input.GetAxis("Horizontal");
-        rb.linearVelocity = new Vector2(move * velocidade, rb.linearVelocity.y);
+        rb.velocity = new Vector2(move * velocidade, rb.velocity.y);
     }
 
     void Jump()
     {
         estaNoChao = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
         if (estaNoChao && Input.GetButtonDown("Jump"))
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, forcaPulo);
+            rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
     }
 }
