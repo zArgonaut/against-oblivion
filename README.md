@@ -125,6 +125,8 @@ git merge main
 
 - Corrigido o suavização da câmera multiplicando a suavidade por `Time.deltaTime`.
 - Arquivo `ignore.conf` removido e todas as regras migradas para `.gitignore`.
+- Implementado sistema de pooling para projéteis, evitando instâncias repetidas e
+  melhorando a performance.
 
 
 ## 📄 Licença
