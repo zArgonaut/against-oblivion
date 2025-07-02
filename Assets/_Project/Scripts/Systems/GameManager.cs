@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         CurrentDifficulty = difficulty;
         scoreMultiplier = DifficultyMultiplier(difficulty);
         ChangeState(GameState.Jogando);
-        SceneManager.LoadScene("Fase1_Deserto");
+        SceneManager.LoadScene("FaseDeserto");
     }
 
     public void ChangeState(GameState newState)
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     public void LoadShop()
     {
         ChangeState(GameState.Loja);
-        SceneManager.LoadScene("Loja");
+        SceneManager.LoadScene("LojaEntreFases");
     }
 
     float DifficultyMultiplier(Difficulty diff)
