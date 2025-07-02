@@ -47,6 +47,13 @@ public class ScoreManager : MonoBehaviour
         AtualizarUI();
     }
 
+    public void AdicionarPontos(int valor)
+    {
+        float mult = GameManager.Instance ? GameManager.Instance.scoreMultiplier : 1f;
+        pontos += Mathf.RoundToInt(valor * mult);
+        AtualizarUI();
+    }
+
     void AtualizarUI()
     {
         if (textoPontos) textoPontos.text = "PONTOS: " + pontos;

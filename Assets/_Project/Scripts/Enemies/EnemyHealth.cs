@@ -12,7 +12,7 @@ public class EnemyHealth : MonoBehaviour
     public float tempoDestruicao = 2f;
 
     [Header("Pontuação")]
-    public int valorPontos = 10; // Set 10 melee, 20 ranged, 30 voador
+    public EnemyType tipo = EnemyType.Melee;
 
     private SpriteRenderer spriteRenderer;
     private Color corOriginal;
@@ -55,7 +55,7 @@ public class EnemyHealth : MonoBehaviour
 
         // Adiciona pontuação
         if (ScoreManager.instance != null)
-            ScoreManager.instance.AdicionarPontos(valorPontos);
+            ScoreManager.instance.AdicionarPontos(tipo);
 
         Destroy(gameObject, tempoDestruicao);
     }
