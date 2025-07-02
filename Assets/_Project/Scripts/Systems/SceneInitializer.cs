@@ -15,7 +15,7 @@ public class SceneInitializer : MonoBehaviour
     void Awake()
     {
         // Instancia o jogador
-        if (playerPrefab != null && playerSpawn != null && FindObjectOfType<PlayerController>() == null)
+        if (playerPrefab != null && playerSpawn != null && FindObjectOfType<PlayerMovement>() == null)
             Instantiate(playerPrefab, playerSpawn.position, Quaternion.identity);
 
         // Instancia o HordaManager e configura pontos de spawn
