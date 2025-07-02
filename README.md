@@ -138,7 +138,7 @@ Scripts ficam em `Assets/_Project/Scripts`. Para adicionar inimigos crie um pref
 Este projeto foi revisado para incluir um `GameManager` que controla os estados, um `SaveSystem` com dois slots e pontuação ajustada pela dificuldade.
 O `HordaManager` também libera o chefe ao atingir a pontuação necessária.
 Além disso o `PlayerMovement` faz o jogador avançar constantemente enquanto o `PlayerStamina` regula o fôlego para correr e esquivar.
-O `InventoryManager` agora possui slots de armas, munição e bandagens.
+O `InventoryManager` agora possui slots de armas, munição e bandagens. Ele preenche quatro slots com armas padrão ao iniciar e possui método para trocar o slot equipado atualizando o controlador de armas.
 
 
 ---
