@@ -133,6 +133,13 @@ Scripts ficam em `Assets/_Project/Scripts`. Para adicionar inimigos crie um pref
 
 - Corrigido o suavização da câmera multiplicando a suavidade por `Time.deltaTime`.
 - Arquivo `ignore.conf` removido e todas as regras migradas para `.gitignore`.
+## 🔄 Novo sistema de jogo
+
+Este projeto foi revisado para incluir um `GameManager` que controla os estados, um `SaveSystem` com dois slots e pontuação ajustada pela dificuldade.
+O `HordaManager` também libera o chefe ao atingir a pontuação necessária.
+Além disso o `PlayerMovement` faz o jogador avançar constantemente enquanto o `PlayerStamina` regula o fôlego para correr e esquivar.
+O `InventoryManager` agora possui slots de armas, munição e bandagens.
+
 
 ---
 
