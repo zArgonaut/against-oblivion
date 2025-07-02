@@ -7,7 +7,12 @@ public class HordaManager : MonoBehaviour
     public Transform[] pontosSpawn;
     public float intervaloSpawn = 5f;
 
+    [Header("Boss")]
+    public GameObject bossPrefab;
+    public int pontosParaBoss = 100;
+
     private float timer;
+    private bool bossSpawnado = false;
 
     void Update()
     {
@@ -16,6 +21,11 @@ public class HordaManager : MonoBehaviour
         {
             SpawnInimigo();
             timer = intervaloSpawn;
+        }
+
+        if (!bossSpawnado && ScoreManager.instance != null && ScoreManager.instance.pontos >= pontosParaBoss)
+        {
+            SpawnBoss();
         }
     }
 
@@ -27,5 +37,13 @@ public class HordaManager : MonoBehaviour
         int idxPonto = Random.Range(0, pontosSpawn.Length);
 
         Instantiate(inimigos[idxInimigo], pontosSpawn[idxPonto].position, Quaternion.identity);
+    }
+
+    void SpawnBoss()
+    {
+        if (bossPrefab == null || pontosSpawn.Length == 0) return;
+        bossSpawnado = true;
+        int idxPonto = Random.Range(0, pontosSpawn.Length);
+        Instantiate(bossPrefab, pontosSpawn[idxPonto].position, Quaternion.identity);
     }
 }
