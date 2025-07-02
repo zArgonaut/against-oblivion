@@ -54,6 +54,12 @@ public class ScoreManager : MonoBehaviour
         AtualizarUI();
     }
 
+    public void SetPontos(int valor)
+    {
+        pontos = valor;
+        AtualizarUI();
+    }
+
     void AtualizarUI()
     {
         if (textoPontos) textoPontos.text = "PONTOS: " + pontos;
