@@ -42,6 +42,10 @@ public class GameManager : MonoBehaviour
 
     public void StartGame(Difficulty difficulty, int slot)
     {
+        if (ScoreManager.instance != null)
+        {
+            ScoreManager.instance.Reset();
+        }
         CurrentDifficulty = difficulty;
         scoreMultiplier = DifficultyMultiplier(difficulty);
 
