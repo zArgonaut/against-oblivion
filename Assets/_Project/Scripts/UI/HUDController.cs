@@ -60,13 +60,13 @@ public class HUDController : MonoBehaviour
 
     void UpdateHealthUI(int value)
     {
-        if (healthText != null)
-            healthText.text = "HP: " + value;
+        if (healthText != null && health != null)
+            healthText.text = "HP: " + value + "/" + health.maxHealth;
     }
 
     void UpdateStaminaUI(int value)
     {
-        if (staminaText != null)
-            staminaText.text = "ST: " + value;
+        if (staminaText != null && stamina != null)
+            staminaText.text = "ST: " + value + "/" + stamina.maxStamina;
     }
 }
