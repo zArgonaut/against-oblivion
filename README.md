@@ -144,6 +144,23 @@ O `HordaManager` também libera o chefe ao atingir a pontuação necessária.
 Além disso o `PlayerMovement` faz o jogador avançar constantemente enquanto o `PlayerStamina` regula o fôlego para correr e esquivar.
 O `InventoryManager` agora possui slots de armas, munição e bandagens. Ele preenche quatro slots com armas padrão ao iniciar e possui método para trocar o slot equipado atualizando o controlador de armas.
 
+### Utilizando os slots de save e a dificuldade
+
+- No menu inicial escolha **Slot 1** ou **Slot 2**. Cada slot grava fase atual, pontos, inventário e nível das armas.
+- Ao iniciar um jogo novo selecione a dificuldade **Fácil**, **Normal** ou **Difícil**. Isso define o multiplicador de pontuação (1x, 1.25x ou 1.5x).
+- O jogo salva automaticamente ao avançar de fase ou retornar ao menu.
+
+### Loja e arma secreta “Pão Baguete”
+
+- A cena `LojaEntreFases.unity` permite gastar pontos em melhorias de arma, capacidade de munição e recarga. Os botões são controlados pelo `ShopManager` (`Assets/_Project/Scripts/Systems/ShopManager.cs`).
+- Se o jogador chegar à loja na quarta fase sem gastar nenhum ponto, o `ShopManager` transforma o **Porrete** do inventário na arma secreta **Pão Baguete** com munição completa.
+
+### Novos scripts
+
+- `GameManager.cs` e `SaveSystem.cs` em `Assets/_Project/Scripts/Systems` cuidam dos estados do jogo e dos dois slots de salvamento.
+- `ShopManager.cs` em `Assets/_Project/Scripts/Systems` gerencia a loja e libera o Pão Baguete.
+- `FXManager.cs` em `Assets/_Project/Scripts/FX` centraliza os efeitos de partículas.
+
 
 ---
 
