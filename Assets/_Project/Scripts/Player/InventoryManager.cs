@@ -23,6 +23,8 @@ public class InventoryManager : MonoBehaviour
     public int bandagens = 0;
     public int powerUps = 0;
 
+    public event System.Action OnInventoryChanged;
+
     int slotEquipped = 0;
     public WeaponSlot ArmaEquipada => armas.Length > slotEquipped ? armas[slotEquipped] : null;
 
@@ -40,6 +42,7 @@ public class InventoryManager : MonoBehaviour
         armas[1] = new WeaponSlot { tipo = WeaponType.Rifle, municao = 50, capacidade = 100 };
         armas[2] = new WeaponSlot { tipo = WeaponType.Shotgun, municao = 20, capacidade = 40 };
         armas[3] = new WeaponSlot { tipo = WeaponType.Granada, municao = 5, capacidade = 10 };
+        OnInventoryChanged?.Invoke();
     }
 
     public void AdicionarMunicao(WeaponType tipo, int quantidade)
@@ -52,6 +55,7 @@ public class InventoryManager : MonoBehaviour
                 break;
             }
         }
+        OnInventoryChanged?.Invoke();
     }
 
     public void AumentarCapacidade(WeaponType tipo, int quantidade)
@@ -64,6 +68,7 @@ public class InventoryManager : MonoBehaviour
                 break;
             }
         }
+        OnInventoryChanged?.Invoke();
     }
 
     public void UsarBandagem(PlayerHealth vida, int quantidade)
@@ -71,6 +76,7 @@ public class InventoryManager : MonoBehaviour
         if (bandagens <= 0) return;
         vida.Curar(quantidade);
         bandagens--;
+        OnInventoryChanged?.Invoke();
     }
 
     public void MudarSlotEquipada(int novoSlot, WeaponController controller)
@@ -80,11 +86,13 @@ public class InventoryManager : MonoBehaviour
 
         slotEquipped = novoSlot;
         AtualizarController(controller);
+        OnInventoryChanged?.Invoke();
     }
 
     public void EquiparArma(int slot, WeaponController controller)
     {
         MudarSlotEquipada(slot, controller);
+        OnInventoryChanged?.Invoke();
     }
 
     public bool ConsumirMunicao(int quantidade = 1)
@@ -100,6 +108,7 @@ public class InventoryManager : MonoBehaviour
             return false;
 
         arma.municao -= quantidade;
+        OnInventoryChanged?.Invoke();
         return true;
     }
 
