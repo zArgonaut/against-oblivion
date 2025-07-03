@@ -7,13 +7,13 @@ public class EnemyAdvancedAI : MonoBehaviour
     public float distanciaStop = 2f;
     public Transform[] pontosAlternativos;
 
-    private Rigidbody2D rb;
+    private Rigidbody rb;
     private Animator animator;
     private Transform destino;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         destino = pontosAlternativos.Length>0? pontosAlternativos[0] : jogador;
     }
@@ -21,7 +21,7 @@ public class EnemyAdvancedAI : MonoBehaviour
     void Update()
     {
         if (jogador == null) return;
-        float d = Vector2.Distance(transform.position, jogador.position);
+        float d = Vector3.Distance(transform.position, jogador.position);
         if (d < distanciaStop)
         {
             // escolhe rota alternativa
@@ -32,8 +32,8 @@ public class EnemyAdvancedAI : MonoBehaviour
         {
             destino = jogador;
         }
-        Vector2 dir = (destino.position - transform.position).normalized;
-        rb.velocity = new Vector2(dir.x * velocidade, rb.velocity.y);
+        Vector3 dir = (destino.position - transform.position).normalized;
+        rb.velocity = new Vector3(dir.x * velocidade, rb.velocity.y, dir.z * velocidade);
         if (animator) animator.SetFloat("Velocidade", Mathf.Abs(dir.x));
         transform.localScale = new Vector3(Mathf.Sign(dir.x), 1, 1);
     }
