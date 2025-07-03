@@ -9,8 +9,6 @@ public class EnemyHealth : MonoBehaviour
     public bool IsDead => vidaAtual <= 0;
 
     [Header("Feedback Visual")]
-    public GameObject fxDano;
-    public GameObject fxMorte;
     public float tempoDestruicao = 2f;
 
     [Header("Pontuação")]
@@ -31,8 +29,8 @@ public class EnemyHealth : MonoBehaviour
     {
         vidaAtual -= dano;
 
-        if (fxDano != null)
-            Instantiate(fxDano, transform.position, Quaternion.identity);
+        if (FXManager.Instance != null)
+            FXManager.Instance.PlayBlood(transform.position);
 
         StartCoroutine(FlashDano());
 
@@ -52,8 +50,8 @@ public class EnemyHealth : MonoBehaviour
 
     void Morrer()
     {
-        if (fxMorte != null)
-            Instantiate(fxMorte, transform.position, Quaternion.identity);
+        if (FXManager.Instance != null)
+            FXManager.Instance.PlayExplosion(transform.position);
 
         // Adiciona pontuação
         if (ScoreManager.instance != null)
