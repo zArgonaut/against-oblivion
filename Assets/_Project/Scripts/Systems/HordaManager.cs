@@ -23,7 +23,7 @@ public class HordaManager : MonoBehaviour
             timer = intervaloSpawn;
         }
 
-        if (!bossSpawnado && ScoreManager.instance != null && ScoreManager.instance.pontos >= pontosParaBoss)
+        if (!bossSpawnado && ScoreManager.instance != null && ScoreManager.instance.pontos >= GetPontosParaBoss())
         {
             SpawnBoss();
         }
@@ -45,5 +45,19 @@ public class HordaManager : MonoBehaviour
         bossSpawnado = true;
         int idxPonto = Random.Range(0, pontosSpawn.Length);
         Instantiate(bossPrefab, pontosSpawn[idxPonto].position, Quaternion.identity);
+    }
+
+    public int GetPontosParaBoss()
+    {
+        var diff = GameManager.Instance ? GameManager.Instance.CurrentDifficulty : GameManager.Difficulty.Normal;
+        switch (diff)
+        {
+            case GameManager.Difficulty.Facil:
+                return Mathf.RoundToInt(pontosParaBoss * 0.75f);
+            case GameManager.Difficulty.Dificil:
+                return Mathf.RoundToInt(pontosParaBoss * 1.5f);
+            default:
+                return pontosParaBoss;
+        }
     }
 }
