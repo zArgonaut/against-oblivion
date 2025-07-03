@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     public GameState State { get; private set; } = GameState.MenuInicial;
     public Difficulty CurrentDifficulty { get; private set; } = Difficulty.Normal;
+    public int CurrentSlot { get; private set; } = 0;
 
     public float scoreMultiplier { get; private set; } = 1f;
 
@@ -46,8 +47,8 @@ public class GameManager : MonoBehaviour
         {
             ScoreManager.instance.Reset();
         }
-        CurrentDifficulty = difficulty;
-        scoreMultiplier = DifficultyMultiplier(difficulty);
+        SelectDifficulty(difficulty);
+        CurrentSlot = slot;
 
         var data = LoadGame(slot);
         if (data != null)
@@ -69,10 +70,92 @@ public class GameManager : MonoBehaviour
         State = newState;
     }
 
-    public void LoadShop()
+    public void SelectDifficulty(Difficulty difficulty)
+    {
+        CurrentDifficulty = difficulty;
+        scoreMultiplier = DifficultyMultiplier(difficulty);
+    }
+
+    public void EnterMenuInicial(int slot = 0)
+    {
+        CurrentSlot = slot;
+        ChangeState(GameState.MenuInicial);
+        SceneManager.LoadScene("MainMenu");
+        LoadGame(CurrentSlot);
+    }
+
+    public void StartGameplay()
+    {
+        ChangeState(GameState.Jogando);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(startSceneIndex);
+    }
+
+    public void PauseGame()
+    {
+        if (State == GameState.Pausado) return;
+        ChangeState(GameState.Pausado);
+        Time.timeScale = 0f;
+    }
+
+    public void ResumeGame()
+    {
+        if (State != GameState.Pausado) return;
+        ChangeState(GameState.Jogando);
+        Time.timeScale = 1f;
+    }
+
+    public void EnterUpgrade()
+    {
+        ChangeState(GameState.Upgrade);
+    }
+
+    public void EnterGameOver()
+    {
+        ChangeState(GameState.GameOver);
+        Time.timeScale = 1f;
+        SaveGame(CurrentSlot);
+        SceneManager.LoadScene("GameOver");
+    }
+
+    public void EnterVitoria()
+    {
+        ChangeState(GameState.Vitoria);
+        Time.timeScale = 1f;
+        SaveGame(CurrentSlot);
+        SceneManager.LoadScene("Vitoria");
+    }
+
+    public void EnterShop()
     {
         ChangeState(GameState.Loja);
         SceneManager.LoadScene("LojaEntreFases");
+    }
+
+    public void EnterModoHorda()
+    {
+        ChangeState(GameState.ModoHorda);
+        SceneManager.LoadScene("TesteJogabilidade");
+    }
+
+    public void NextPhase()
+    {
+        int next = SceneManager.GetActiveScene().buildIndex + 1;
+        if (next >= SceneManager.sceneCountInBuildSettings)
+        {
+            EnterMenuInicial(CurrentSlot);
+        }
+        else
+        {
+            SaveGame(CurrentSlot);
+            SceneManager.LoadScene(next);
+            ChangeState(GameState.Jogando);
+        }
+    }
+
+    public void LoadShop()
+    {
+        EnterShop();
     }
 
     public void SaveGame(int slot)

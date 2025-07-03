@@ -37,6 +37,8 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         onDeath?.Invoke();
+        if (GameManager.Instance != null)
+            GameManager.Instance.EnterGameOver();
         gameObject.SetActive(false);
     }
 }

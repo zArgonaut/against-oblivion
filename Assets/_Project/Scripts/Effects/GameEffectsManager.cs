@@ -39,7 +39,17 @@ public class GameEffectsManager : MonoBehaviour
     public void AlternarPausa()
     {
         pausado = !pausado;
-        Time.timeScale = pausado ? 0 : 1;
+        if (GameManager.Instance != null)
+        {
+            if (pausado)
+                GameManager.Instance.PauseGame();
+            else
+                GameManager.Instance.ResumeGame();
+        }
+        else
+        {
+            Time.timeScale = pausado ? 0 : 1;
+        }
         if (menuPausa != null) menuPausa.SetActive(pausado);
         Debug.Log("Jogo " + (pausado ? "Pausado" : "Despausado"));
     }
