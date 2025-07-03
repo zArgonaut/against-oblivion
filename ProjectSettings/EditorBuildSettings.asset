@@ -26,5 +26,11 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/_Project/Scenes/Modo_Horda.unity
     guid: 0121c39133eb4040becd776e9ac69bd0
+  - enabled: 1
+    path: Assets/_Project/Scenes/GameOver.unity
+    guid: e0c5dfacf97748d4aa7ebaf1d9b56527
+  - enabled: 1
+    path: Assets/_Project/Scenes/Vitoria.unity
+    guid: f3f46f96ef3b44cc94ff84943d9a614b
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
