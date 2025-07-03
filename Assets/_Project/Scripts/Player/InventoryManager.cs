@@ -14,6 +14,7 @@ public class WeaponSlot
 {
     public WeaponType tipo;
     public int municao;
+    public int capacidade;
 }
 
 public class InventoryManager : MonoBehaviour
@@ -31,10 +32,10 @@ public class InventoryManager : MonoBehaviour
         if (armas.Length < 4)
             armas = new WeaponSlot[4];
 
-        armas[0] = new WeaponSlot { tipo = WeaponType.Porrete, municao = 0 };
-        armas[1] = new WeaponSlot { tipo = WeaponType.Rifle, municao = 50 };
-        armas[2] = new WeaponSlot { tipo = WeaponType.Shotgun, municao = 20 };
-        armas[3] = new WeaponSlot { tipo = WeaponType.Granada, municao = 5 };
+        armas[0] = new WeaponSlot { tipo = WeaponType.Porrete, municao = 0, capacidade = 0 };
+        armas[1] = new WeaponSlot { tipo = WeaponType.Rifle, municao = 50, capacidade = 100 };
+        armas[2] = new WeaponSlot { tipo = WeaponType.Shotgun, municao = 20, capacidade = 40 };
+        armas[3] = new WeaponSlot { tipo = WeaponType.Granada, municao = 5, capacidade = 10 };
     }
 
     public void AdicionarMunicao(WeaponType tipo, int quantidade)
@@ -43,7 +44,19 @@ public class InventoryManager : MonoBehaviour
         {
             if (slot.tipo == tipo)
             {
-                slot.municao += quantidade;
+                slot.municao = Mathf.Min(slot.municao + quantidade, slot.capacidade);
+                break;
+            }
+        }
+    }
+
+    public void AumentarCapacidade(WeaponType tipo, int quantidade)
+    {
+        foreach (var slot in armas)
+        {
+            if (slot.tipo == tipo)
+            {
+                slot.capacidade += quantidade;
                 break;
             }
         }
