@@ -190,10 +190,12 @@ public class GameManager : MonoBehaviour
         {
             data.weaponSlots = new WeaponType[inv.armas.Length];
             data.weaponAmmo = new int[inv.armas.Length];
+            data.ammoCapacidade = new int[inv.armas.Length];
             for (int i = 0; i < inv.armas.Length; i++)
             {
                 data.weaponSlots[i] = inv.armas[i].tipo;
                 data.weaponAmmo[i] = inv.armas[i].municao;
+                data.ammoCapacidade[i] = inv.armas[i].capacidade;
             }
             data.bandagens = inv.bandagens;
             data.powerUps = inv.powerUps;
@@ -238,6 +240,8 @@ public class GameManager : MonoBehaviour
                     inv.armas[i].tipo = pendingData.weaponSlots[i];
                     if (pendingData.weaponAmmo != null && pendingData.weaponAmmo.Length > i)
                         inv.armas[i].municao = pendingData.weaponAmmo[i];
+                    if (pendingData.ammoCapacidade != null && pendingData.ammoCapacidade.Length > i)
+                        inv.armas[i].capacidade = pendingData.ammoCapacidade[i];
                 }
                 inv.bandagens = pendingData.bandagens;
                 inv.powerUps = pendingData.powerUps;

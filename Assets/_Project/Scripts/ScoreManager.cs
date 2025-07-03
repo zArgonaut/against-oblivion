@@ -25,6 +25,7 @@ public class ScoreManager : MonoBehaviour
     private Dictionary<EnemyType, int> lookup = new Dictionary<EnemyType, int>();
 
     [HideInInspector] public int pontos = 0;
+    [HideInInspector] public int pontosGastos = 0;
     public TextMeshProUGUI textoPontos;
 
     void Awake()
@@ -61,6 +62,16 @@ public class ScoreManager : MonoBehaviour
     public void Reset()
     {
         SetPontos(0);
+        pontosGastos = 0;
+    }
+
+    public bool SpendPoints(int valor)
+    {
+        if (pontos < valor) return false;
+        pontos -= valor;
+        pontosGastos += valor;
+        AtualizarUI();
+        return true;
     }
 
     void AtualizarUI()
