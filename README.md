@@ -133,6 +133,8 @@ Scripts ficam em `Assets/_Project/Scripts`. Para adicionar inimigos crie um pref
 
 - Corrigido o suavização da câmera multiplicando a suavidade por `Time.deltaTime`.
 - Arquivo `ignore.conf` removido e todas as regras migradas para `.gitignore`.
+- Bosses agora possuem scripts próprios com fase de Fúria. O `HordaManager` invoca o chefe assim que a pontuação exigida é alcançada.
+- Colosso Instável adiciona ondas de choque e lançamento de pedras. Durante a Fúria ele ataca com mais frequência.
 ## 🔄 Novo sistema de jogo
 
 Este projeto foi revisado para incluir um `GameManager` que controla os estados, um `SaveSystem` com dois slots e pontuação ajustada pela dificuldade.

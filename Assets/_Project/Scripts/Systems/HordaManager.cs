@@ -36,6 +36,12 @@ public class HordaManager : MonoBehaviour
     {
         timer -= Time.deltaTime;
 
+        if (!bossSpawnado && ScoreManager.instance != null && ScoreManager.instance.pontos >= GetPontosParaBoss())
+        {
+            SpawnBoss();
+            return;
+        }
+
         if (inimigosRestantes > 0 && timer <= 0f)
         {
             SpawnInimigo();
@@ -44,10 +50,7 @@ public class HordaManager : MonoBehaviour
         }
         else if (inimigosRestantes <= 0 && !ExistemInimigosVivos())
         {
-            if (!bossSpawnado && ScoreManager.instance != null && ScoreManager.instance.pontos >= GetPontosParaBoss())
-                SpawnBoss();
-            else
-                IniciarWave(waveAtual + 1);
+            IniciarWave(waveAtual + 1);
         }
     }
 
