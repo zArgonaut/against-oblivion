@@ -12,7 +12,7 @@ public class ItemPickup : MonoBehaviour
     public TipoItem tipo;
     public int valor = 10;
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
 

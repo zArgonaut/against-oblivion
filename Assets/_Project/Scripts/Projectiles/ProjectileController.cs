@@ -20,10 +20,10 @@ public LayerMask hitMask;
 
     void Update()
     {
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter(Collider other)
     {
         if (((1 << other.gameObject.layer) & hitMask) != 0)
         {

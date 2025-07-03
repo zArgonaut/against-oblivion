@@ -51,7 +51,7 @@ public static class PrefabFactory
         var sprite = Resources.Load<Sprite>(tipo.ToString());
         var renderer = go.AddComponent<SpriteRenderer>();
         renderer.sprite = sprite;
-        go.AddComponent<BoxCollider2D>();
+        go.AddComponent<BoxCollider>();
         go.AddComponent<WeaponController>();
         return go;
     }
@@ -63,7 +63,7 @@ public static class PrefabFactory
         var sprite = Resources.Load<Sprite>("Icon_" + tipo);
         var renderer = go.AddComponent<SpriteRenderer>();
         renderer.sprite = sprite;
-        var col = go.AddComponent<CircleCollider2D>();
+        var col = go.AddComponent<SphereCollider>();
         col.isTrigger = true;
         var item = go.AddComponent<ItemPickup>();
         item.tipo = tipo;
@@ -78,9 +78,9 @@ public static class PrefabFactory
         var sprite = Resources.Load<Sprite>(nome);
         var renderer = go.AddComponent<SpriteRenderer>();
         renderer.sprite = sprite;
-        var rb = go.AddComponent<Rigidbody2D>();
-        rb.gravityScale = 0f;
-        var col = go.AddComponent<CircleCollider2D>();
+        var rb = go.AddComponent<Rigidbody>();
+        rb.useGravity = false;
+        var col = go.AddComponent<SphereCollider>();
         col.isTrigger = true;
         go.layer = LayerMask.NameToLayer("Default");
         go.AddComponent<ProjectileController>();
@@ -94,8 +94,8 @@ public static class PrefabFactory
         var sprite = Resources.Load<Sprite>(nome);
         var renderer = go.AddComponent<SpriteRenderer>();
         renderer.sprite = sprite;
-        go.AddComponent<Rigidbody2D>();
-        go.AddComponent<BoxCollider2D>();
+        go.AddComponent<Rigidbody>();
+        go.AddComponent<BoxCollider>();
         go.AddComponent<EnemyHealth>();
         go.AddComponent<EnemyPatrol>();
         var atk = go.AddComponent<EnemyAttack>();
