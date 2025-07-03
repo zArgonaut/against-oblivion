@@ -223,36 +223,40 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (pendingScore >= 0 && ScoreManager.instance != null)
+        // Carrega dados do slot atual se não houver pendência do StartGame
+        var data = pendingData != null ? pendingData : SaveSystem.Load(CurrentSlot);
+
+        if (ScoreManager.instance != null)
         {
-            ScoreManager.instance.SetPontos(pendingScore);
+            int score = pendingScore >= 0 ? pendingScore : (data != null ? data.pontos : 0);
+            ScoreManager.instance.SetPontos(score);
             pendingScore = -1;
         }
 
-        if (pendingData != null)
+        if (data != null)
         {
             var inv = FindObjectOfType<InventoryManager>();
-            if (inv != null && pendingData.weaponSlots != null)
+            if (inv != null && data.weaponSlots != null)
             {
-                int len = Mathf.Min(inv.armas.Length, pendingData.weaponSlots.Length);
+                int len = Mathf.Min(inv.armas.Length, data.weaponSlots.Length);
                 for (int i = 0; i < len; i++)
                 {
-                    inv.armas[i].tipo = pendingData.weaponSlots[i];
-                    if (pendingData.weaponAmmo != null && pendingData.weaponAmmo.Length > i)
-                        inv.armas[i].municao = pendingData.weaponAmmo[i];
-                    if (pendingData.ammoCapacidade != null && pendingData.ammoCapacidade.Length > i)
-                        inv.armas[i].capacidade = pendingData.ammoCapacidade[i];
+                    inv.armas[i].tipo = data.weaponSlots[i];
+                    if (data.weaponAmmo != null && data.weaponAmmo.Length > i)
+                        inv.armas[i].municao = data.weaponAmmo[i];
+                    if (data.ammoCapacidade != null && data.ammoCapacidade.Length > i)
+                        inv.armas[i].capacidade = data.ammoCapacidade[i];
                 }
-                inv.bandagens = pendingData.bandagens;
-                inv.powerUps = pendingData.powerUps;
+                inv.bandagens = data.bandagens;
+                inv.powerUps = data.powerUps;
             }
 
             var upg = FindObjectOfType<UpgradeSystem>();
             if (upg != null)
-                upg.nivelArma = pendingData.weaponTier;
-
-            pendingData = null;
+                upg.nivelArma = data.weaponTier;
         }
+
+        pendingData = null;
     }
 
     float DifficultyMultiplier(Difficulty diff)
