@@ -7,12 +7,15 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
 
+    public event System.Action<int> OnHealthChanged;
+
     [Tooltip("Event invoked when the player dies")]
     public UnityEvent onDeath;
 
     void Awake()
     {
         currentHealth = maxHealth;
+        OnHealthChanged?.Invoke(currentHealth);
     }
 
     public void LevarDano(int quantidade)
@@ -21,6 +24,8 @@ public class PlayerHealth : MonoBehaviour
 
         currentHealth -= quantidade;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
+        OnHealthChanged?.Invoke(currentHealth);
 
         if (currentHealth <= 0)
             Die();
@@ -32,6 +37,8 @@ public class PlayerHealth : MonoBehaviour
 
         currentHealth += quantidade;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
+        OnHealthChanged?.Invoke(currentHealth);
     }
 
     void Die()
