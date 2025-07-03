@@ -1,1 +1,3 @@
-// Prefab placeholder for Boss_ColossoInstavel.prefab
+// Prefab: Boss_ColossoInstavel
+// Componentes: SpriteRenderer, Animator, Rigidbody, BoxCollider
+// Scripts: ColossoInstavel.cs
