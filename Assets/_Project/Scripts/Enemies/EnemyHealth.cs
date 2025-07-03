@@ -6,6 +6,8 @@ public class EnemyHealth : MonoBehaviour
     public int vidaMaxima = 50;
     private int vidaAtual;
 
+    public bool IsDead => vidaAtual <= 0;
+
     [Header("Feedback Visual")]
     public GameObject fxDano;
     public GameObject fxMorte;
