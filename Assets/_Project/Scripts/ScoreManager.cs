@@ -42,9 +42,7 @@ public class ScoreManager : MonoBehaviour
     public void AdicionarPontos(EnemyType tipo)
     {
         int valor = lookup.ContainsKey(tipo) ? lookup[tipo] : 1;
-        float mult = GameManager.Instance ? GameManager.Instance.scoreMultiplier : 1f;
-        pontos += Mathf.RoundToInt(valor * mult);
-        AtualizarUI();
+        AdicionarPontos(valor);
     }
 
     public void AdicionarPontos(int valor)
