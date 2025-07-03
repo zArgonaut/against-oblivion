@@ -16,6 +16,7 @@ public class FXManager : MonoBehaviour
         Blood,
         Snow,
         EscudoColosso,
+        Explosion,
         // Outros efeitos podem ser adicionados aqui
     }
 
@@ -41,6 +42,7 @@ public class FXManager : MonoBehaviour
         Register(FXType.Blood, (p, r, parent) => CreateSimpleParticles("BloodFX", p, r, parent, Color.red, 1f, 30));
         Register(FXType.Snow, (p, r, parent) => CreateSimpleParticles("SnowFX", p, r, parent, Color.white, 2f, 10));
         Register(FXType.EscudoColosso, (p, r, parent) => CreateShield(p, r, parent));
+        Register(FXType.Explosion, (p, r, parent) => CreateSimpleParticles("ExplosionFX", p, r, parent, new Color(1f, 0.5f, 0f), 1f, 40));
     }
 
     public void Register(FXType type, Func<Vector3, Quaternion, Transform, GameObject> builder)

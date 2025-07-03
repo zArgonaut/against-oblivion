@@ -30,7 +30,7 @@ public class EnemyHealth : MonoBehaviour
         vidaAtual -= dano;
 
         if (FXManager.Instance != null)
-            FXManager.Instance.PlayBlood(transform.position);
+            FXManager.Instance.Play(FXManager.FXType.Blood, transform.position);
 
         StartCoroutine(FlashDano());
 
@@ -51,7 +51,7 @@ public class EnemyHealth : MonoBehaviour
     void Morrer()
     {
         if (FXManager.Instance != null)
-            FXManager.Instance.PlayExplosion(transform.position);
+            FXManager.Instance.Play(FXManager.FXType.Explosion, transform.position);
 
         // Adiciona pontuação
         if (ScoreManager.instance != null)
