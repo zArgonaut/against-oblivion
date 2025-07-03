@@ -1,3 +1,0 @@
-// Prefab: Granada
-// SpriteRenderer uses 'Granada.png'
-// Components: SpriteRenderer, SphereCollider (isTrigger), Rigidbody (isKinematic), ExplosiveGrenade.cs

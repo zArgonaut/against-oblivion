@@ -1,4 +1,0 @@
-// Prefab: Shotgun
-// SpriteRenderer uses 'Shotgun.png'
-// Components: SpriteRenderer, BoxCollider, WeaponController.cs
-// Note: attach to left hand
