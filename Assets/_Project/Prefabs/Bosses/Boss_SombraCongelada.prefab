@@ -1,1 +1,3 @@
-// Prefab placeholder for Boss_SombraCongelada.prefab
+// Prefab: Boss_SombraCongelada
+// Componentes: SpriteRenderer, Animator, Rigidbody, BoxCollider
+// Scripts: SombraCongelada.cs

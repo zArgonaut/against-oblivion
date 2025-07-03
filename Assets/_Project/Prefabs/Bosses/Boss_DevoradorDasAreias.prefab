@@ -1,1 +1,3 @@
-// Prefab placeholder for Boss_DevoradorDasAreias.prefab
+// Prefab: Boss_DevoradorDasAreias
+// Componentes: SpriteRenderer, Animator, Rigidbody, BoxCollider
+// Scripts: DevoradorDasAreias.cs
