@@ -134,7 +134,9 @@ Scripts ficam em `Assets/_Project/Scripts`. Para adicionar inimigos crie um pref
 - Corrigido o suavização da câmera multiplicando a suavidade por `Time.deltaTime`.
 - Arquivo `ignore.conf` removido e todas as regras migradas para `.gitignore`.
 - Bosses agora possuem scripts próprios com fase de Fúria. O `HordaManager` invoca o chefe assim que a pontuação exigida é alcançada.
-- Colosso Instável adiciona ondas de choque e lançamento de pedras. Durante a Fúria ele ataca com mais frequência.
+- Colosso Instável conjura ondas de choque e lança pedras. Quando entra em Fúria, combina ambos os golpes e reduz o intervalo entre ataques.
+- Devorador das Areias convoca jatos de areia de vários ângulos. Sua fase de Fúria faz os ataques surgirem em intervalos menores.
+- Sombra Congelada dispara projeções gélidas e ganha resistência extra. Com a Fúria ativa ele ataca duas vezes mais rápido e sofre menos dano.
 ## 🔄 Novo sistema de jogo
 
 Este projeto foi revisado para incluir um `GameManager` que controla os estados, um `SaveSystem` com dois slots e pontuação ajustada pela dificuldade.
