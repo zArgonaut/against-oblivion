@@ -41,6 +41,7 @@ public class BossControllerDeserto : MonoBehaviour
     void Morrer()
     {
         Destroy(gameObject);
-        GameFlowManager.instancia?.Avancar();
+        if (GameManager.Instance != null)
+            GameManager.Instance.NextPhase();
     }
 }
