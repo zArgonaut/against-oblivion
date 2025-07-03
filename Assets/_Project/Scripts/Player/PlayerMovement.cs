@@ -1,5 +1,7 @@
 using UnityEngine;
 
+// Unified 3D movement script replacing legacy PlayerController variants
+
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {

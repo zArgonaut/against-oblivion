@@ -1,4 +1,4 @@
 // Prefab: Enemy_Soldado
 // Componente: SpriteRenderer usando Enemy_Soldado.png
-// Rigidbody2D+BoxCollider2D
+// Rigidbody + BoxCollider
 // Scripts: EnemyPatrol.cs, EnemyHealth.cs, EnemyAttack.cs
