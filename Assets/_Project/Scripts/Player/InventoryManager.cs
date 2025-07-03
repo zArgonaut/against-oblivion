@@ -26,6 +26,10 @@ public class InventoryManager : MonoBehaviour
     int slotEquipped = 0;
     public WeaponSlot ArmaEquipada => armas.Length > slotEquipped ? armas[slotEquipped] : null;
 
+    public int MunicaoAtual => ArmaEquipada != null ? ArmaEquipada.municao : 0;
+    public int CapacidadeAtual => ArmaEquipada != null ? ArmaEquipada.capacidade : 0;
+    public WeaponType TipoAtual => ArmaEquipada != null ? ArmaEquipada.tipo : WeaponType.Porrete;
+
     void Awake()
     {
         // Preenche os slots com armas padrao e quantidades iniciais de municao
@@ -76,6 +80,27 @@ public class InventoryManager : MonoBehaviour
 
         slotEquipped = novoSlot;
         AtualizarController(controller);
+    }
+
+    public void EquiparArma(int slot, WeaponController controller)
+    {
+        MudarSlotEquipada(slot, controller);
+    }
+
+    public bool ConsumirMunicao(int quantidade = 1)
+    {
+        var arma = ArmaEquipada;
+        if (arma == null)
+            return false;
+
+        if (arma.capacidade == 0)
+            return true; // melee weapons don't use ammo
+
+        if (arma.municao < quantidade)
+            return false;
+
+        arma.municao -= quantidade;
+        return true;
     }
 
     void AtualizarController(WeaponController controller)

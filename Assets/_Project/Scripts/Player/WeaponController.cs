@@ -12,10 +12,12 @@ public class WeaponController : MonoBehaviour
 
     private float fireTimer = 0f;
     private PlayerEnergy energy;
+    private InventoryManager inventory;
 
     void Start()
     {
         energy = GetComponent<PlayerEnergy>();
+        inventory = GetComponent<InventoryManager>();
     }
 
     void Update()
@@ -25,8 +27,11 @@ public class WeaponController : MonoBehaviour
         {
             if (energy == null || energy.Consume(energyCost))
             {
-                Shoot();
-                fireTimer = fireRate;
+                if (inventory == null || inventory.ConsumirMunicao())
+                {
+                    Shoot();
+                    fireTimer = fireRate;
+                }
             }
         }
     }
