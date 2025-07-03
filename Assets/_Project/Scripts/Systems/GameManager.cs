@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public float scoreMultiplier { get; private set; } = 1f;
 
     int pendingScore = -1;
+    SaveData pendingData = null;
     const int startSceneIndex = 1; // FaseDeserto
 
     void Awake()
@@ -54,10 +55,12 @@ public class GameManager : MonoBehaviour
         if (data != null)
         {
             pendingScore = data.pontos;
+            pendingData = data;
         }
         else
         {
             pendingScore = 0;
+            pendingData = null;
         }
 
         ChangeState(GameState.Jogando);
@@ -132,6 +135,21 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("LojaEntreFases");
     }
 
+    public void ExitShop()
+    {
+        SaveGame(CurrentSlot);
+        int next = SceneManager.GetActiveScene().buildIndex + 1;
+        if (next >= SceneManager.sceneCountInBuildSettings)
+        {
+            EnterMenuInicial(CurrentSlot);
+        }
+        else
+        {
+            SceneManager.LoadScene(next);
+            ChangeState(GameState.Jogando);
+        }
+    }
+
     public void EnterModoHorda()
     {
         ChangeState(GameState.ModoHorda);
@@ -166,6 +184,27 @@ public class GameManager : MonoBehaviour
             pontos = ScoreManager.instance ? ScoreManager.instance.pontos : 0,
             dificuldade = CurrentDifficulty
         };
+
+        var inv = FindObjectOfType<InventoryManager>();
+        if (inv != null)
+        {
+            data.weaponSlots = new WeaponType[inv.armas.Length];
+            data.weaponAmmo = new int[inv.armas.Length];
+            for (int i = 0; i < inv.armas.Length; i++)
+            {
+                data.weaponSlots[i] = inv.armas[i].tipo;
+                data.weaponAmmo[i] = inv.armas[i].municao;
+            }
+            data.bandagens = inv.bandagens;
+            data.powerUps = inv.powerUps;
+        }
+
+        var upgrade = FindObjectOfType<UpgradeSystem>();
+        if (upgrade != null)
+        {
+            data.weaponTier = upgrade.nivelArma;
+        }
+
         SaveSystem.Save(slot, data);
     }
 
@@ -186,6 +225,29 @@ public class GameManager : MonoBehaviour
         {
             ScoreManager.instance.SetPontos(pendingScore);
             pendingScore = -1;
+        }
+
+        if (pendingData != null)
+        {
+            var inv = FindObjectOfType<InventoryManager>();
+            if (inv != null && pendingData.weaponSlots != null)
+            {
+                int len = Mathf.Min(inv.armas.Length, pendingData.weaponSlots.Length);
+                for (int i = 0; i < len; i++)
+                {
+                    inv.armas[i].tipo = pendingData.weaponSlots[i];
+                    if (pendingData.weaponAmmo != null && pendingData.weaponAmmo.Length > i)
+                        inv.armas[i].municao = pendingData.weaponAmmo[i];
+                }
+                inv.bandagens = pendingData.bandagens;
+                inv.powerUps = pendingData.powerUps;
+            }
+
+            var upg = FindObjectOfType<UpgradeSystem>();
+            if (upg != null)
+                upg.nivelArma = pendingData.weaponTier;
+
+            pendingData = null;
         }
     }
 
