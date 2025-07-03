@@ -15,10 +15,10 @@ public class PlayerMeleeCombat : MonoBehaviour
 
     void Atacar()
     {
-        Collider2D hit = Physics2D.OverlapCircle(pontoAtaque.position, alcance, inimigoLayer);
-        if (hit)
+        Collider[] hits = Physics.OverlapSphere(pontoAtaque.position, alcance, inimigoLayer);
+        if (hits.Length > 0)
         {
-            EnemyHealth inimigo = hit.GetComponent<EnemyHealth>();
+            EnemyHealth inimigo = hits[0].GetComponent<EnemyHealth>();
             if (inimigo) inimigo.LevarDano(dano);
         }
     }

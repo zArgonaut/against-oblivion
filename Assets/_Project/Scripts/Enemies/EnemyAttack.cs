@@ -15,10 +15,10 @@ public class EnemyAttack : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer <= 0f)
         {
-            Collider2D hit = Physics2D.OverlapCircle(pontoAtaque.position, raio, playerLayer);
-            if (hit != null)
+            Collider[] hits = Physics.OverlapSphere(pontoAtaque.position, raio, playerLayer);
+            if (hits.Length > 0)
             {
-                hit.GetComponent<PlayerHealth>()?.LevarDano(dano);
+                hits[0].GetComponent<PlayerHealth>()?.LevarDano(dano);
                 timer = intervalo;
             }
         }
