@@ -125,7 +125,12 @@ public class SceneInitializer : MonoBehaviour
         if (FindObjectOfType<PlayerMovement>() != null)
             return;
 
-        GameObject prefab = playerPrefab != null ? playerPrefab : PrefabFactory.CreatePlayer();
+        GameObject prefab = playerPrefab;
+        if (prefab == null)
+            prefab = Resources.Load<GameObject>("Prefabs/Player/Player");
+        if (prefab == null)
+            prefab = PrefabFactory.CreatePlayer();
+
         if (prefab != null)
             Instantiate(prefab, new Vector3(0f, 1f, 0f), Quaternion.identity);
     }

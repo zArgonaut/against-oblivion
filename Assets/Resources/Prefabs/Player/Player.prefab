@@ -1,0 +1,7 @@
+// Prefab: Player
+// Descricao: personagem jogador com modelo 3D simples.
+// Inclui CharacterController, PlayerMovement, PlayerHealth,
+// PlayerEnergy, PlayerStamina, InventoryManager, WeaponController
+// e PlayerMeleeCombat.
+// Possui filho FirePoint e um filho ProjectilePool contendo o script
+// ProjectilePool configurado com o projétil padrao.
