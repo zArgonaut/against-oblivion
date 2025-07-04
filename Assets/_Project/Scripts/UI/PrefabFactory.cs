@@ -154,4 +154,16 @@ public static class PrefabFactory
 
         return go;
     }
+
+    // Câmera básica caso o prefab não exista
+    public static GameObject CreateCamera(Transform alvo = null)
+    {
+        var go = new GameObject("PlayerCamera");
+        go.AddComponent<Camera>();
+        var follow = go.AddComponent<CameraFollow>();
+        follow.offset = new Vector3(0f, 1.6f, -5f);
+        if (alvo != null)
+            follow.alvo = alvo;
+        return go;
+    }
 }
