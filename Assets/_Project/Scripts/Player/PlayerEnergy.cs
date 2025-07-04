@@ -7,9 +7,12 @@ public class PlayerEnergy : MonoBehaviour
     public int currentEnergy;
     public float regenRate = 10f;
 
+    public event System.Action<int> OnEnergyChanged;
+
     void Awake()
     {
         currentEnergy = maxEnergy;
+        OnEnergyChanged?.Invoke(currentEnergy);
     }
 
     void Update()
@@ -19,6 +22,7 @@ public class PlayerEnergy : MonoBehaviour
             currentEnergy += Mathf.CeilToInt(regenRate * Time.deltaTime);
             if (currentEnergy > maxEnergy)
                 currentEnergy = maxEnergy;
+            OnEnergyChanged?.Invoke(currentEnergy);
         }
     }
 
@@ -28,11 +32,13 @@ public class PlayerEnergy : MonoBehaviour
             return false;
 
         currentEnergy -= amount;
+        OnEnergyChanged?.Invoke(currentEnergy);
         return true;
     }
 
     public void Restore(int amount)
     {
         currentEnergy = Mathf.Clamp(currentEnergy + amount, 0, maxEnergy);
+        OnEnergyChanged?.Invoke(currentEnergy);
     }
 }
