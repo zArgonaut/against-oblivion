@@ -115,6 +115,13 @@ public static class PrefabFactory
         var text = textGO.AddComponent<TMPro.TextMeshProUGUI>();
         var manager = go.AddComponent<ScoreManager>();
         manager.textoPontos = text;
+
+        var energyGO = new GameObject("EnergyText");
+        energyGO.transform.SetParent(go.transform);
+        var energyText = energyGO.AddComponent<TMPro.TextMeshProUGUI>();
+        var hud = go.AddComponent<HUDController>();
+        hud.energyText = energyText;
+
         return go;
     }
 

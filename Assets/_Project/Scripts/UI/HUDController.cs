@@ -7,10 +7,12 @@ public class HUDController : MonoBehaviour
     public TextMeshProUGUI ammoText;
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI staminaText;
+    public TextMeshProUGUI energyText;
 
     InventoryManager inventory;
     PlayerHealth health;
     PlayerStamina stamina;
+    PlayerEnergy energy;
 
     void OnEnable()
     {
@@ -20,6 +22,8 @@ public class HUDController : MonoBehaviour
             health = FindObjectOfType<PlayerHealth>();
         if (stamina == null)
             stamina = FindObjectOfType<PlayerStamina>();
+        if (energy == null)
+            energy = FindObjectOfType<PlayerEnergy>();
 
         if (inventory != null)
             inventory.OnInventoryChanged += UpdateWeaponUI;
@@ -27,10 +31,13 @@ public class HUDController : MonoBehaviour
             health.OnHealthChanged += UpdateHealthUI;
         if (stamina != null)
             stamina.OnStaminaChanged += UpdateStaminaUI;
+        if (energy != null)
+            energy.OnEnergyChanged += UpdateEnergyUI;
 
         UpdateWeaponUI();
         if (health != null) UpdateHealthUI(health.currentHealth);
         if (stamina != null) UpdateStaminaUI(stamina.currentStamina);
+        if (energy != null) UpdateEnergyUI(energy.currentEnergy);
     }
 
     void OnDisable()
@@ -41,6 +48,8 @@ public class HUDController : MonoBehaviour
             health.OnHealthChanged -= UpdateHealthUI;
         if (stamina != null)
             stamina.OnStaminaChanged -= UpdateStaminaUI;
+        if (energy != null)
+            energy.OnEnergyChanged -= UpdateEnergyUI;
     }
 
     void UpdateWeaponUI()
@@ -68,5 +77,11 @@ public class HUDController : MonoBehaviour
     {
         if (staminaText != null && stamina != null)
             staminaText.text = "ST: " + value + "/" + stamina.maxStamina;
+    }
+
+    void UpdateEnergyUI(int value)
+    {
+        if (energyText != null && energy != null)
+            energyText.text = "EN: " + value + "/" + energy.maxEnergy;
     }
 }
