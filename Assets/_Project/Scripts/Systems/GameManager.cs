@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     int pendingScore = -1;
     SaveData pendingData = null;
-    const int startSceneIndex = 1; // FaseDeserto
+    const int startSceneIndex = 1; // Fase1_Deserto
 
     void Awake()
     {
@@ -132,7 +132,7 @@ public class GameManager : MonoBehaviour
     public void EnterShop()
     {
         ChangeState(GameState.Loja);
-        SceneManager.LoadScene("LojaEntreFases");
+        SceneManager.LoadScene("Loja");
     }
 
     public void ExitShop()
