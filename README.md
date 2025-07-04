@@ -1,12 +1,12 @@
-# 🎮 Against Oblivion
+# Against Oblivion
 
 Projeto de desenvolvimento de jogo em primeira pessoa (FPS) com múltiplas fases, implementado como trabalho da disciplina de **Computação Gráfica** — Universidade Federal Rural do Rio de Janeiro (UFRRJ).
 
-## 📘 Descrição
+## Descrição
 
 **Against Oblivion** é um jogo de luta e sobrevivência ambientado em um mundo pós-apocalíptico. O jogador deve enfrentar hordas de monstros, coletar itens, aprimorar suas armas e derrotar minibosses até alcançar o Boss final — líder de uma legião tecnológica que domina o planeta.
 
-## 🧠 Disciplina
+## Disciplina
 
 - **Curso:** Ciência da Computação  
 - **Disciplina:** Computação Gráfica  
@@ -14,13 +14,13 @@ Projeto de desenvolvimento de jogo em primeira pessoa (FPS) com múltiplas fases
 - **Professora:** [Nome da professora, se desejar incluir]  
 - **Período:** [Semestre e ano do curso, ex: 2025.1]  
 
-## 👥 Integrantes
+## Integrantes
 
 - Caio Almeida de Souza  
 - Gustavo Marinho Guimarães  
 - Maicom Howie Guimarães da Silva
 
-## 🎮 Mecânicas e Tecnologias
+## Mecânicas e Tecnologias
 
 - FPS com fases progressivas e minibosses  
 - Sistema de pontuação e upgrade de armas  
@@ -31,7 +31,7 @@ Projeto de desenvolvimento de jogo em primeira pessoa (FPS) com múltiplas fases
 - Combate corpo-a-corpo e à distância  
 - Ciclo de vida, energia e níveis de progressão  
 
-## 🛠️ Tecnologias Utilizadas
+##  Tecnologias Utilizadas
 
 - Unity Engine  
 - C# (scripts de lógica e controle)  
@@ -39,7 +39,7 @@ Projeto de desenvolvimento de jogo em primeira pessoa (FPS) com múltiplas fases
 - Blender (modelagem 3D de personagens e ambientes)  
 - Git e GitHub para versionamento  
 
-## 🚧 Estrutura do Projeto Unity
+## Estrutura do Projeto Unity
 
 ```
 Assets/
@@ -56,7 +56,7 @@ Assets/
 ├── Resources/
 ```
 
-## ✅ Como começar
+## Como começar
 
 1. Clone este repositório:
    ```bash
@@ -71,11 +71,11 @@ Este projeto já vem com um `.gitignore` configurado para projetos Unity, evitan
 
 ---
 
-## 🚀 Workflow de Desenvolvimento em Equipe
+## Workflow de Desenvolvimento em Equipe
 
 Para garantir organização e evitar conflitos no projeto, adotaremos as seguintes práticas de versionamento com Git:
 
-### 🔧 Criação de branch por desenvolvedor
+### Criação de branch por desenvolvedor
 
 Cada integrante deve trabalhar em uma branch separada:
 
@@ -83,17 +83,17 @@ Cada integrante deve trabalhar em uma branch separada:
 git checkout -b nome-do-integrante
 ```
 
-### 💾 Commits e push
+### Commits e push
 
 Após concluir um conjunto de tarefas:
 
 ```bash
 git add .
-git commit -m "✨ Descrição do que foi desenvolvido"
+git commit -m " Descrição do que foi desenvolvido"
 git push origin nome-do-integrante
 ```
 
-### 🔁 Pull Requests
+### Pull Requests
 
 Quando o recurso estiver estável:
 
@@ -103,7 +103,7 @@ Quando o recurso estiver estável:
 4. Descreva as mudanças e envie para revisão  
 5. Após aprovação, faça o merge  
 
-### 🧼 Atualizar sua branch com o que há na `main`
+### Atualizar sua branch com o que há na `main`
 
 Para evitar conflitos:
 
@@ -114,7 +114,7 @@ git checkout sua-branch
 git merge main
 ```
 
-### ⚠️ Cuidados com o Unity
+###  Cuidados com o Unity
 
 - Evite trabalhar simultaneamente na mesma cena `.unity`
 - Nunca delete diretórios ou arquivos sem combinar com o time
@@ -129,7 +129,7 @@ Abra `Assets/_Project/Scenes/MainMenu.unity` no Unity e pressione Play. O progre
 
 Scripts ficam em `Assets/_Project/Scripts`. Para adicionar inimigos crie um prefab em `Prefabs` e registre no `HordaManager`.
 
-## 🆕 Atualizações
+## Atualizações
 
 - Corrigido o suavização da câmera multiplicando a suavidade por `Time.deltaTime`.
 - Arquivo `ignore.conf` removido e todas as regras migradas para `.gitignore`.
@@ -137,7 +137,7 @@ Scripts ficam em `Assets/_Project/Scripts`. Para adicionar inimigos crie um pref
 - Colosso Instável conjura ondas de choque e lança pedras. Quando entra em Fúria, combina ambos os golpes e reduz o intervalo entre ataques.
 - Devorador das Areias convoca jatos de areia de vários ângulos. Sua fase de Fúria faz os ataques surgirem em intervalos menores.
 - Sombra Congelada dispara projeções gélidas e ganha resistência extra. Com a Fúria ativa ele ataca duas vezes mais rápido e sofre menos dano.
-## 🔄 Novo sistema de jogo
+## Novo sistema de jogo
 
 Este projeto foi revisado para incluir um `GameManager` que controla os estados, um `SaveSystem` com dois slots e pontuação ajustada pela dificuldade.
 O `HordaManager` também libera o chefe ao atingir a pontuação necessária.
@@ -183,7 +183,7 @@ FXManager.Instance.Register(FXManager.FXType.Dust,
 
 ---
 
-## 🗺️ Guia Rápido para Desenvolvedores
+## Guia Rápido para Desenvolvedores
 
 ### Abrindo as cenas
 
@@ -245,7 +245,7 @@ Configure os campos do componente `MiniMapa` da seguinte forma:
 - **range**: distância máxima em unidades de mundo mostrada no mini mapa.
 
 
-## 📄 Licença
+## Licença
 
 Projeto de uso acadêmico e educacional.
 Todos os direitos reservados aos autores citados neste documento.
