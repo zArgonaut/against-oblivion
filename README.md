@@ -63,7 +63,7 @@ Assets/
    git clone https://github.com/zArgonaut/against-oblivion.git
    ```
 2. Abra com o Unity.
-   - Requer Unity na versão 6000.1.5f1 (verifique em `ProjectSettings/ProjectVersion.txt`).
+   - Requer Unity na versão 2022.3.0f1 (verifique em `ProjectSettings/ProjectVersion.txt`).
 3. Navegue até `Assets/_Project/Scenes/` e crie a cena inicial `MainMenu.unity` (ou execute-a se já existir).
 
 
