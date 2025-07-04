@@ -147,8 +147,26 @@ public class SceneInitializer : MonoBehaviour
             hudPrefab = Resources.Load<GameObject>("Prefabs/UI/CanvasPrincipal");
         if (hudPrefab == null) hudPrefab = PrefabFactory.CreateScoreHUD();
 
+        GameObject hudObj = null;
         if (FindObjectOfType<ScoreManager>() == null && hudPrefab != null)
-            Instantiate(hudPrefab);
+            hudObj = Instantiate(hudPrefab);
+
+        if (hudObj != null)
+        {
+            var canvas = hudObj.GetComponentInChildren<Canvas>();
+            if (canvas == null) canvas = hudObj.GetComponent<Canvas>();
+
+            GameObject miniPrefab = Resources.Load<GameObject>("Prefabs/UI/MiniMapa");
+            GameObject miniInstance = null;
+            if (miniPrefab != null)
+                miniInstance = Instantiate(miniPrefab, canvas != null ? canvas.transform : hudObj.transform);
+            else
+            {
+                miniInstance = PrefabFactory.CreateMiniMapa();
+                if (canvas != null)
+                    miniInstance.transform.SetParent(canvas.transform, false);
+            }
+        }
     }
 
     // Gatilho de boss no final

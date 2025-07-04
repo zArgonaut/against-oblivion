@@ -208,6 +208,19 @@ Certifique-se de que ela é a primeira cena na lista de **Build Settings**.
 2. Coloque os scripts de comportamento em `Assets/_Project/Scripts/Enemies`.
 3. Ao incluir o inimigo em uma fase, use o prefab para garantir consistência.
 
+### MiniMapa
+
+O prefab `MiniMapa` em `Assets/_Project/Prefabs/UI` permite exibir inimigos ao redor do jogador.
+Adicione-o como filho do canvas da HUD nas cenas ou deixe o `SceneInitializer`
+instanciá-lo automaticamente quando a HUD for criada.
+
+Configure os campos do componente `MiniMapa` da seguinte forma:
+
+- **area**: `RectTransform` do contêiner onde os blips serão gerados.
+- **blipPrefab**: objeto UI usado como ponto no mapa.
+- **player**: referência ao `Transform` do jogador (opcional, é buscado no início caso esteja vazio).
+- **range**: distância máxima em unidades de mundo mostrada no mini mapa.
+
 
 ## 📄 Licença
 

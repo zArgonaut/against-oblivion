@@ -127,4 +127,24 @@ public static class PrefabFactory
         go.AddComponent<AdminDebugPanel>();
         return go;
     }
+
+    // Mini mapa simples caso o prefab não exista
+    public static GameObject CreateMiniMapa()
+    {
+        var go = new GameObject("MiniMapa");
+        var areaGO = new GameObject("Area");
+        areaGO.transform.SetParent(go.transform);
+        var areaRect = areaGO.AddComponent<RectTransform>();
+
+        var blipGO = new GameObject("Blip");
+        blipGO.transform.SetParent(areaGO.transform);
+        var img = blipGO.AddComponent<UnityEngine.UI.Image>();
+        blipGO.SetActive(false);
+
+        var mini = go.AddComponent<MiniMapa>();
+        mini.area = areaRect;
+        mini.blipPrefab = blipGO;
+
+        return go;
+    }
 }
