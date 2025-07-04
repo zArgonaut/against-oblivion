@@ -161,6 +161,25 @@ O `InventoryManager` agora possui slots de armas, munição e bandagens. Ele pre
 - `ShopManager.cs` em `Assets/_Project/Scripts/Systems` gerencia a loja e libera o Pão Baguete.
 - `FXManager.cs` em `Assets/_Project/Scripts/FX` centraliza os efeitos de partículas.
 
+#### FXManager.FXType
+
+Enumeração que define os efeitos visuais padrões utilizados pelo `FXManager`:
+
+- **Dust** – partículas de poeira.
+- **Blood** – respingos de sangue.
+- **Snow** – flocos de neve.
+- **EscudoColosso** – escudo circular usado pelo boss Colosso Instável.
+- **Explosion** – explosões simples.
+
+```csharp
+// Executando uma explosão em determinada posição
+FXManager.Instance.Play(FXManager.FXType.Explosion, position);
+
+// Registrando um efeito customizado
+FXManager.Instance.Register(FXManager.FXType.Dust,
+    (pos, rot, parent) => MeuConstrutorDeParticulas(pos, rot, parent));
+```
+
 
 ---
 
