@@ -152,7 +152,7 @@ O `InventoryManager` agora possui slots de armas, munição e bandagens. Ele pre
 
 ### Loja e arma secreta “Pão Baguete”
 
-- A cena `LojaEntreFases.unity` permite gastar pontos em melhorias de arma, capacidade de munição e recarga. Os botões são controlados pelo `ShopManager` (`Assets/_Project/Scripts/Systems/ShopManager.cs`).
+- A cena `Loja.unity` permite gastar pontos em melhorias de arma, capacidade de munição e recarga. Os botões são controlados pelo `ShopManager` (`Assets/_Project/Scripts/Systems/ShopManager.cs`).
 - Se o jogador chegar à loja na quarta fase sem gastar nenhum ponto, o `ShopManager` transforma o **Porrete** do inventário na arma secreta **Pão Baguete** com munição completa.
 
 ### Novos scripts
@@ -193,10 +193,14 @@ Abra cada uma delas pelo **Unity** em `File > Open Scene`:
 ```
 Assets/_Project/Scenes/
 ├── MainMenu.unity
-├── FaseDeserto.unity
-├── FaseGelo.unity
-├── FaseMontanha.unity
-├── LojaEntreFases.unity
+├── Fase1_Deserto.unity
+├── Fase2_Floresta.unity
+├── Fase3_Montanhas.unity
+├── Fase4_Complexo.unity
+├── Loja.unity
+├── Modo_Horda.unity
+├── GameOver.unity
+├── Vitoria.unity
 ├── TesteJogabilidade.unity
 └── Cena_TestesAgainstOblivion.unity
 ```

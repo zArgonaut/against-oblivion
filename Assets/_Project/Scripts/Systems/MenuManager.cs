@@ -10,7 +10,7 @@ public class MenuManager : MonoBehaviour
 
     public void MostrarLoja()
     {
-        SceneManager.LoadScene("LojaEntreFases");
+        SceneManager.LoadScene("Loja");
     }
 
     public void Salvar(int slot)
