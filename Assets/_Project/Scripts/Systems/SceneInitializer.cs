@@ -23,6 +23,7 @@ public class SceneInitializer : MonoBehaviour
         if (ativarClima)
             CriarClima();
         CriarPlayer();
+        CriarCamera();
         CriarSpawner();
         CriarHUD();
         CriarBossTrigger();
@@ -127,6 +128,23 @@ public class SceneInitializer : MonoBehaviour
         GameObject prefab = playerPrefab != null ? playerPrefab : PrefabFactory.CreatePlayer();
         if (prefab != null)
             Instantiate(prefab, new Vector3(0f, 1f, 0f), Quaternion.identity);
+    }
+
+    // Instancia câmera seguindo o jogador
+    void CriarCamera()
+    {
+        if (Camera.main != null)
+            return;
+
+        GameObject camPrefab = Resources.Load<GameObject>("Prefabs/Camera/PlayerCamera");
+        GameObject cameraObj = camPrefab != null ?
+            Instantiate(camPrefab, Vector3.zero, Quaternion.identity) :
+            PrefabFactory.CreateCamera();
+
+        var follow = cameraObj.GetComponent<CameraFollow>();
+        var player = FindObjectOfType<PlayerMovement>();
+        if (follow != null && player != null)
+            follow.alvo = player.transform;
     }
 
     // Cria spawner de inimigos ao fundo

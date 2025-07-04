@@ -1,0 +1,5 @@
+// Prefab: PlayerCamera
+// Descrição: Câmera principal que segue o jogador
+Componentes:
+- Camera
+- Script: CameraFollow.cs (alvo configurado em tempo de execução, offset (0,1.6,-5))
