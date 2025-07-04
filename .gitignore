@@ -68,3 +68,6 @@ sysinfo.txt
 temp
 usersettings
 ~UnityDirMonSyncFile~*
+
+#.plastic workspace data
+.plastic/
